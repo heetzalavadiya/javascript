@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problme-2</title>
+</head>
+<body>
+    <h1>enter the height:</h1>
+    <h2 id="height">  </h2>
+    <h1>enter the weight:</h1>
+    <h2 id="weight">  </h2>
+    <h1>your BMI is:</h1>
+    <h2 id="BMI">  </h2>
+</body>
+</html>
+<script>
+    let weight = prompt("enter the weight")
+    document.getElementById("weight").innerHTML = weight
+    console.log(weight)
+    let height = prompt("enter the height")
+    document.getElementById("height").innerHTML = height
+    console.log(height)
+    
+    if(weight>0 && height>0){
+        let BMI = weight / (height * height)
+        document.getElementById("BMI").innerHTML = BMI
+        console.log(BMI) 
+    }
+    else{
+        console.log("entr the height width")   
+    }
+</script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>problem-1</title>
+</head>
+
+<body>
+    <h1>Enter The Price:</h1>
+    <p id="price"> </p>
+    <h1>Enter The quantity:</h1>
+    <p id="quantity"> </p>
+    <h1>Total Cost:</h1>
+    <p id="totalcost"> </p>
+</body>
+
+</html>
+<script>
+    let price = prompt("enter the price:")
+    document.getElementById("price").innerHTML = price
+    console.log(price)
+    let quantity = prompt("enter the quantity")
+    document.getElementById("quantity").innerHTML = quantity
+    console.log(quantity)
+
+    if (!isNaN(price) && quantity > 0) {
+        let totalcost = price * quantity
+        document.getElementById("totalcost").innerHTML = totalcost
+        console.log(totalcost)
+    }
+    else {
+        console.log("plaese enter the valid quantity!!")
+    }
+</script>

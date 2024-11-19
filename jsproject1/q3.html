@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>problme-3</title>
+</head>
+<body>
+    <h1> enter the distance travelled in meteres: </h1>
+    <h2 id="travel">  </h2>
+    <h1> enter the time taken in seconds: </h1>
+    <h2 id="time">  </h2>
+    <h1> the speed is <span id="speed">  </span>MS/s</h1>
+</body>
+</html>
+<script>
+    let travel = prompt("enter the travelled distance in meters:")
+    document.getElementById("travel").innerHTML = travel
+    console.log(travel)
+
+    let time = prompt("enter the time taken in seconds:")
+    document.getElementById("time").innerHTML = time
+    console.log(time)
+        
+    let speed = travel / time;
+    document.getElementById("speed").innerHTML = speed
+    console.log(speed)   
+</script>
