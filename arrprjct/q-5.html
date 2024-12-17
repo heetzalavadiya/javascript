@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> 4. use map and filter function to find length of the all element greater than 4</h1>
+</body>
+</html>
+<script>
+    let arr = ["apple","banana","orange","grape","pineapple"]
+
+    let arr1 = arr.filter((el,i)=>{
+        if(el.length > 4){
+            return el;
+        }
+    })
+
+    let FindLength = arr1.map((el,i)=>{
+        return el.length
+    })
+
+    console.log(FindLength)
+</script>

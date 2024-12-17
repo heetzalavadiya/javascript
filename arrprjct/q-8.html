@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>8. write a function processArray that taken can array of the string filter out the string with less then 5
+        charater, and then converts the remaining during in uppercase</h1>
+</body>
+
+</html>
+<script>
+    let arr = ["apple", "banana", "jay", "smit", "pineapple", "jhon"]
+    let arr_1 = arr.filter((el, i) => {
+        if (el.length <= 5) {
+            return el.length
+        }
+    })
+
+    let arr_2 = arr_1.map(el => el.toUpperCase())
+    console.log(arr_2)
+    
+</script>

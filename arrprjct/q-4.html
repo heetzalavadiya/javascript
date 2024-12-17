@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> 4. use filter and reduce to find sum of all even number.</h1>
+</body>
+</html>
+<script>
+    let arr = [1,2,3,4,5,6,7,8,9]
+
+    let arrfilter = arr.filter((el,i)=>{
+        return el % 2 == 0
+    })
+
+    let arrreduce = arr.reduce((sum,el)=>{
+        return sum + el
+    },0)
+
+    console.log(arrreduce)
+</script>
