@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const numbers = [3, 7, 2, 9, 4]
+
+    const largeNumber = numbers.reduce((max, current) => {
+        if (current > max) {
+            return current
+        } else {
+            return max
+        }
+    }, numbers[0])
+    console.log(largeNumber)
+
+</script>
+
+</html>
