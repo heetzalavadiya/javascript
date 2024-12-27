@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .navbar{
+        height: 10vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        font-family: fantasy;
+        /* border: 1px solid #000; */
+    }
+    .logo{
+        height: 100%;
+        width: 13%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        /* border: 1px solid #000; */
+    }
+    .nav{
+        height: 100%;
+        width: 82%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        /* border: 1px solid #000; */
+    }
+    li,a{
+        text-decoration: none;
+        color: #000;
+        list-style-type: none;
+        font-size: 1.2rem;
+    }
+    #product{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+    .innerdiv{
+        height: auto;
+        width: 100%;
+        border: 2px solid #000;
+        border-radius: 10px;
+    }
+    .innerdiv:hover{
+        box-shadow: 3px 3px 10px black;
+    }
+    .img{
+        height: 50%;
+        width: 50%;
+        margin: 3% 25%;
+        /* object-fit: cover; */
+    }
+    .p{
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 700;
+        text-align: center;
+        margin: 5%;
+        font-size: 1.2rem;
+    }
+    .price{
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        margin: 5%;
+    }
+    .btn{
+        height: 6vh;
+        width: 10vw;
+        border-radius: 5px;
+        border: none;
+        background-color: rgb(73, 73, 249);
+        color: white;
+        font-size: 0.9rem;
+        font-weight: 400;
+        margin: 0% 29%;
+    }
+</style>
+<body>    
+    <div class="navbar">
+        <div class="logo">
+            <h1> Products </h1>
+        </div>
+        <div class="nav">
+            <li><a href="./fakeapiappend.html">Home</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Register</a></li>
+            <li><a href="#">Products</a></li>
+        </div>
+        <div class="cartpart">
+            <!-- <a href="./cart.html"><i class = "fa-solid fa-bag-shopping icon"></i></a>
+            <span id="cart"
+            style = "font-family: monospace; font-size: 2.1rem;">0</span> -->
+        </div>
+    </div>
+    <div id="product"></div>
+</body>
+</html>
+<script>
+    // function counter(){
+    //     // document.getElementById("counter").innerText = Cart.length
+    // }
+    // fetch("https://fakestoreapi.com/products")
+    // .then((res)=> {
+    //     return res.json()
+    // })
+    // .then((res)=>{
+    //     // console.log(res)
+    //     // displaydata(res)
+    //     localStorage.setItem("product", JSON.stringify(res))
+    // })
+    // .catch((err)=>{
+    //     console.log(err)
+    // })
+
+    let product = document.getElementById("product")
+    // let Cart = []
+    // let data = JSON.parse(localStorage.getItem("Cart"))
+    // conosle.log(data)   
+
+    function displaydata(){
+        let data = JSON.parse(localStorage.getItem("cart"))
+        // console.log(data)
+        product.innerHTML = "";
+        data.forEach((el,i)=>{
+            let innerdiv = document.createElement("div")
+            innerdiv.className = "innerdiv"
+
+            let img = document.createElement("img")
+            img.className = "img"
+            img.src = el.image;
+
+            let p = document.createElement("p")
+            p.className = "p"
+            p.innerText = el.category;
+
+            let price = document.createElement("p")
+            price.className = "price"
+            price.innerText = el.price
+            
+            let btn = document.createElement("button")
+            btn.className = "btn"
+            btn.innerText = "Delete"
+
+            btn.addEventListener('click', () => {
+                Deletedata(i)
+                // alert(detele your cart items.)
+            })
+
+            innerdiv.append(img,p,price,btn)
+            product.append(innerdiv)
+        })
+    }
+
+    displaydata()
+
+    function Deletedata(index){
+        let cartData = JSON.parse(localStorage.getItem("cart"))
+            cartData.splice(index,1)
+            localStorage.setItem("cart" , JSON.stringify(cartData))
+        displaydata()
+    }
+</script>

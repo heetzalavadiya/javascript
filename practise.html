@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- <script>
+    
+    const colors = ['red','green','blue']
+    
+    colors.forEach(function(colors,1){
+        console.log('color at this index is ${index}: ${color}');
+        });
+    </script> -->
+    <!-- <script>
+        const colors = ['red', 'green', 'blue'];
+        
+        // Prompt the user to enter an index
+        const userIndex = parseInt(prompt("Enter the index number (0, 1, or 2):"), 10);
+        
+        // Check if the index is valid
+        if (userIndex >= 0 && userIndex < colors.length) {
+            console.log(`Color at index ${userIndex}: ${colors[userIndex]}`);
+            } else {
+                console.log("Invalid index! Please enter a number between 0 and 2.");
+                }
+            </script> -->
+            <!-- <script>
+                // const newArray = array.map(function(currentValue,index,array){
+                    //     return transformedValue
+                    // })
+                    // const numbers = [1, 2, 3, 4, 5];
+                    
+                    // const doubledNumbers = numbers.map(function (currentValue, index, array) {
+                        //     return currentValue * 2; // Transforming each value by doubling it
+                        // });
+                        
+                        // console.log(doubledNumbers); // Output: [2, 4, 6, 8, 10]
+                    </script> -->
+                    <!-- // const rawData = [
+//     { id: 1, name: 'Alice' },
+//     { id: 2, name: 'Bob' },
+//     { id: 3, name: 'Charlie' },
+// ];
+// const processedData = rawData.map(function (item) {
+    //     return {
+        //         id: item.id,
+        //         fullName: item.name.toUpperCase(),
+        //     };
+        // });
+        
+        // console.log(processedData)
+        // processedData 13 now:
+        //
+        // 1/
+        // 1/
+        // { id: 1, fullName: 'ALICE' },
+        // 1 1d: 2,
+        // fullName: 'BOB' },
+        // 1 id: 3, fullName: 'CHARLIE' }
+        // let iceCream = "chocolate";
+        // if (iceCream === "chocolate") {
+            //     alert("Yay, I love chocolate ice cream!");
+            // } else {
+                //     alert("Awwww, but chocolate is my favorite…");
+                // }
+                // alert("hello")
+                
+                // function multiply(num1,num2){
+                    //     let result = num1 * num2;
+                    //     return result;
+// }
+
+// const number1 = parseInt(prompt("enter number1"))
+// const number2 = parseInt(prompt("enter number2"))
+
+// const product = multiply(number1,number2);
+
+// console.log(product)
+// Add an event listener to the entire HTML document -->
+<!-- let clickcount = 0;
+
+document.querySelector("html").addEventListener("click", function () {
+    alert(`Ouch! Stop poking me! ${clickcount}`); // Display an alert when the user clicks anywhere on the page
+    clickcount++;
+    }); -->
+    <!-- <body>
+        <form action="myform">
+            <input type="text" name="username" id="usrname">
+            <input type="number" name="mobilenumber" id="number">
+            <input type="password" name="password" id="password">
+            <input type="password" name="confirmpassword" id="confirmpassword">
+            <input type="button" name="submit" id="submit">
+        </form>
+    </body>
+    <script>
+        let form= document.getElementById("myform")
+
+        let myform = addEventListener("click",function(event)=>{
+            
+        })
+
+        let num = document.getElementById("number").value 
+        let pass = document.getElementById("password").value 
+        let confirm = document.getElementById("confirmpassword").value 
+
+</script> -->
+<body>
+    <form id="myform">
+        <input type="text" placeholder="enter the your name" id="name" required>
+        <input type="number" placeholder="enter the number" id="number" required>
+        <input type="password" placeholder="enter the passowrd" id="pass" required>
+        <input type="password" placeholder="enter the conform passowrd" id="confrom" required>
+        <input type="Submit" value="Submit">
+    </form>
+</body>
+</html>
+<script>
+    let form = document.getElementById("myform")
+    form.addEventListener("submit",(e)=>{
+        e.preventDefault()
+        let name = document.getElementById("name").value
+        let num = document.getElementById("number").value
+        let pass = document.getElementById("pass").value
+        let conform = document.getElementById("confrom").value
+
+        if(num.length < 10){
+            alert("Phone number should be requried 10 digit")
+        }
+
+        if(pass !== conform){
+            alert("both password should be same")
+        }
+
+        console.log(name,num,pass,conform)
+    })
+</script>
+
+
+</html>

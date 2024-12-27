@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // Program to display traffic signal action
+
+// Prompt the user for input
+let signalColor = prompt("Enter the color of the traffic signal (Red, Yellow, Green):").toLowerCase();
+
+// Determine the action based on the signal color
+if (signalColor === "red") {
+    console.log("Stop");
+} else if (signalColor === "yellow") {
+    console.log("Get Ready");
+} else if (signalColor === "green") {
+    console.log("Go");
+} else {
+    console.log("Invalid input! Please enter Red, Yellow, or Green.");
+}
+</script>
+</html>
