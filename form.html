@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .h1 {
+            text-align: center;
+            border-radius: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 900;
+        }
+
+        #form {
+            width: 320px;
+            padding: 2%;
+            /* background-color: #000; */
+            border-radius: 5px;
+            margin: 5% auto;
+            /* color: white; */
+            /* border: 3px solid black; */
+        }
+
+        /* .form:hover{
+            box-shadow: 0px 0px 1px 5px rgb(102, 102, 102);
+            transition: 1s;
+        } */
+        #form label {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #form input {
+            display: block;
+            height: 25px;
+            margin-bottom: 5%;
+            width: 100%;
+            border-radius: 5px;
+            border: 2px solid #000;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .btn {
+            height: 35px;
+            width: 120px;
+            border: none;
+            background-color: blue;
+            border-radius: 5px;
+            color: aliceblue;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            box-shadow: 0px 0px 1px 5px rgb(98, 98, 255);
+            transition-duration: 1s;
+        }
+
+        #maindata {
+            height: auto;
+            width: 95%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* border: 1px solid #000; */
+        }
+
+        .userdata {
+            margin: 3%;
+            /* border: 3px solid #000; */
+            border-radius: 10px;
+            width: 300px;
+            height: auto;
+            padding: 2%;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .userdata:hover {
+            box-shadow: 0px 0px 1px 7px black;
+            transition: 1s;
+        }
+
+        .userdata h4 {
+            padding-top: 4%;
+        }
+
+        .userdata button {
+            background: none;
+            border: none;
+            float: right;
+            font-size: 2rem;
+            text-align: end;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="h1"> Form validation </h1>
+    <form action="" id="form">
+        <label for="Name">Name:</label>
+        <input type="text" name="Name" id="name" required>
+        <label for="Email">EMail:</label>
+        <input type="email" name="Email" id="email" required>
+        <label for="Phone">Phone No:</label>
+        <input type="number" name="Phone" id="phone" required>
+        <label for="pass">Password:</label>
+        <input type="password" name="pass" id="pass" required>
+        <label for="conform">Conform Passowrd:</label>
+        <input type="password" name="conform" id="conform" required>
+        <button class="btn">Save</button>
+    </form>
+
+    <div id="maindata">
+
+    </div>
+</body>
+
+</html>
+<script>
+    let form = document.getElementById("form");
+    let main = document.getElementById("maindata");
+
+    form.addEventListener("submit", (e) => {
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let phone = document.getElementById("phone").value;
+        let pass = document.getElementById("pass").value;
+        let conform = document.getElementById("conform").value;
+
+        let userdata = JSON.parse(localStorage.getItem("userdata")) || [];
+
+        if(phone.length < 10){
+            alert("Phone number should be 10 later!!")
+        }
+
+        if(pass !== conform){
+            alert("both password should be match!")
+        }
+
+        if(email !== "@gmail.com"){
+            alert("gmail write in this formate!")
+        }
+
+        userdata.push({
+            'name': name,
+            'email': email,
+            'phone': phone,
+            'pass': pass,
+            'conform': conform
+        });
+
+        localStorage.setItem("userdata", JSON.stringify(userdata));
+        display();
+        e.target.reset();
+        e.preventDefault();
+
+        location("./data.html")
+    });
+
+    function display() {
+        let userdata = JSON.parse(localStorage.getItem("userdata")) || [];
+        let finaldata = "";
+
+        userdata.forEach((e, i) => {
+            finaldata += `<div class="userdata">
+            <button onclick="dltdata(${i})">&times;</button>
+            <h4>Name:</h4>
+            <p>${e.name}</p>
+            <h4>Email:</h4>
+            <p>${e.email}</p>
+            <h4>Phone No:</h4>
+            <p>${e.phone}</p>
+        </div>`;
+        });
+        main.innerHTML = finaldata;
+    }
+    display()
+
+    function dltdata(index){
+        let userdata = JSON.parse(localStorage.getItem("userdata")) ?? [];
+        userdata.splice(index , 1)
+        localStorage.setItem("userdata", JSON.stringify(userdata));
+        display();
+    }
+</script>

@@ -108,36 +108,7 @@ document.querySelector("html").addEventListener("click", function () {
         let confirm = document.getElementById("confirmpassword").value 
 
 </script> -->
-<body>
-    <form id="myform">
-        <input type="text" placeholder="enter the your name" id="name" required>
-        <input type="number" placeholder="enter the number" id="number" required>
-        <input type="password" placeholder="enter the passowrd" id="pass" required>
-        <input type="password" placeholder="enter the conform passowrd" id="confrom" required>
-        <input type="Submit" value="Submit">
-    </form>
-</body>
-</html>
-<script>
-    let form = document.getElementById("myform")
-    form.addEventListener("submit",(e)=>{
-        e.preventDefault()
-        let name = document.getElementById("name").value
-        let num = document.getElementById("number").value
-        let pass = document.getElementById("pass").value
-        let conform = document.getElementById("confrom").value
 
-        if(num.length < 10){
-            alert("Phone number should be requried 10 digit")
-        }
-
-        if(pass !== conform){
-            alert("both password should be same")
-        }
-
-        console.log(name,num,pass,conform)
-    })
-</script>
 
 
 </html>
