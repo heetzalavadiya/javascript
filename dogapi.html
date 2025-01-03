@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #maindiv {
+
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 25px;
+
+
+    }
+
+    .indiv {
+
+        height: 250px;
+        width: 250px;
+        border-radius: 10px;
+
+    }
+
+    #breed {
+        margin-top: 30px;
+        width: 90%;
+        height: 40px;
+        border-radius: 30px;
+        font-size: large;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        padding-left: 20px;
+
+    }
+
+    #btn {
+        width: 10%;
+        height: 40px;
+        border-radius: 30px;
+        margin-top: 10px;
+        background-color: rgb(4, 104, 4);
+        color: beige;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: large;
+    }
+</style>
+
+<body>
+
+    <center><input type="text" id="breed" placeholder="enter breed here..."></center>
+
+    <center><button id="btn">Submit</button></center><br>
+
+    <div id="maindiv"></div>
+
+</body>
+<script>
+
+    let btn = document.getElementById("btn");
+    
+    let breedInput = document.getElementById("breed");
+
+    async function fetchdata() {
+
+        let breed = document.getElementById("breed").value
+
+        let res = await fetch(`https://dog.ceo/api/breed/${breed}/images`)
+
+        res = await res.json()
+
+        console.log(res)
+
+
+        display(res)
+
+    }
+
+    btn.addEventListener("click", () => {
+
+        fetchdata()
+    });
+
+    breedInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            fetchdata();
+        }
+    });
+
+    // fetchdata() 
+
+    function display(data) {
+
+        maindiv.innerHTML = " "
+
+        data.message.forEach((el) => {
+
+            let maindiv = document.getElementById("maindiv")
+
+            let innerdiv = document.createElement("div")
+
+            let img = document.createElement("img")
+
+            img.src = el
+
+            img.className = "indiv"
+
+            innerdiv.append(img)
+
+            maindiv.append(innerdiv)
+
+        })
+
+    }
+
+
+</script>
+
+</html>

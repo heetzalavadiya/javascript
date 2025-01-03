@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="breed" placeholder="text breed here">
+    <button id="btn">submit</button>
+    <div id="main"></div>
+</body>
+<script>
+    let btn = document.getElementById("btn");
+
+    let mainDiv = document.getElementById("main")
+
+    async function fetchdata(){
+        let brd = document.getElementById("breed");
+
+        brd = brd.value
+
+        let res = await fetch(`https://dog.ceo/api/breed/${brd}/images`);
+
+        res = await res.json();
+
+        display(res);
+
+        console.log(res);
+
+    }
+
+    function display(data){
+        mainDiv.innerHTML = ""
+
+    }
+
+</script>
+</html>
