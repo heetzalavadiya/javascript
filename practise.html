@@ -72,18 +72,18 @@
                 // function multiply(num1,num2){
                     //     let result = num1 * num2;
                     //     return result;
-// }
-
-// const number1 = parseInt(prompt("enter number1"))
-// const number2 = parseInt(prompt("enter number2"))
-
-// const product = multiply(number1,number2);
-
-// console.log(product)
-// Add an event listener to the entire HTML document -->
-<!-- let clickcount = 0;
-
-document.querySelector("html").addEventListener("click", function () {
+    // }
+    
+    // const number1 = parseInt(prompt("enter number1"))
+    // const number2 = parseInt(prompt("enter number2"))
+    
+    // const product = multiply(number1,number2);
+    
+    // console.log(product)
+    // Add an event listener to the entire HTML document -->
+    <!-- let clickcount = 0;
+    
+    document.querySelector("html").addEventListener("click", function () {
     alert(`Ouch! Stop poking me! ${clickcount}`); // Display an alert when the user clicks anywhere on the page
     clickcount++;
     }); -->
@@ -98,19 +98,19 @@ document.querySelector("html").addEventListener("click", function () {
     </body>
     <script>
         let form= document.getElementById("myform")
-
+    
         let myform = addEventListener("click",function(event)=>{
             
         })
-
+    
         let num = document.getElementById("number").value 
         let pass = document.getElementById("password").value 
         let confirm = document.getElementById("confirmpassword").value 
-
-</script> -->
-<script>
-    let marks = 45;
-
+    
+    </script> -->
+        <!-- <script>
+            let marks = 45;
+            
     if(marks >= 33){
         console.log("pass");
         if(marks >= 80){
@@ -122,6 +122,39 @@ document.querySelector("html").addEventListener("click", function () {
     }
     else{
         console.log("fail")
+        }
+    </script> -->
+<script>
+    async function getdata(){
+        return new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve(455)
+            },3500);
+        })
+
+    }
+
+    async function main(params) {
+        
+        console.log("loading modules")
+
+        let data = await getdata()
+    
+        console.log(data);
+
+        console.log("process data")
+
+        console.log("task 2")
+
+        // data.then((v)=>{
+    
+        //     console.log(data);
+    
+        //     console.log("process data")
+    
+        //     console.log("task 2")
+    
+        })
     }
 </script>
 
