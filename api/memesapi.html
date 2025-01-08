@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .div {
+            border: 1px solid #ccc;
+            padding: 5px;
+            margin: 5px;
+            text-align: center;
+        }
+
+        .img {
+            width: 350px;
+            height: 350px;
+        }
+
+        .p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        .edit,.delete {
+            margin: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main"></div>
+</body>
+
+    <script>
+        fetch("https://api.imgflip.com/get_memes")
+            .then((res) => res.json())
+            .then((res) => {
+                let data = res.data.memes;
+                localStorage.setItem("memes", JSON.stringify(data));
+                displaydata();
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+
+        let main = document.getElementById("main");
+
+        function displaydata() {
+            let data = JSON.parse(localStorage.getItem("memes"));
+
+            main.innerHTML = "";
+
+            data.forEach((el, i) => {
+                let innerdiv = document.createElement("div");
+                innerdiv.className = "div";
+
+                let img = document.createElement("img");
+                img.src = el.url;
+                img.className = "img";
+
+                let p = document.createElement("p");
+                p.className = "p";
+                p.innerText = el.name;
+
+                let btn = document.createElement("button");
+                btn.className = "edit";
+                btn.innerHTML = "Edit";
+
+                let dlt = document.createElement("button");
+                dlt.className = "delete";
+                dlt.innerHTML = "Delete";
+
+                innerdiv.append(img, p, btn, dlt);
+                main.append(innerdiv);
+
+                dlt.addEventListener("click", () => {
+                    Deletedata(i);
+                    
+                });
+                btn.addEventListener("click", () => {
+                    editdata(i);
+                    
+                });
+            });
+        }
+
+        function Deletedata(index) {
+            let data = JSON.parse(localStorage.getItem("memes"));
+            data.splice(index, 1);
+            localStorage.setItem("memes", JSON.stringify(data));
+            displaydata();
+        }
+
+        function editdata(index){
+            let data = JSON.parse(localStorage.getItem("memes"));
+            let newname = prompt("enter new name",data[index].name);
+            
+            if(newname){
+
+                data[index].name = newname;
+                localStorage.setItem("memes",JSON.stringify(data));
+                displaydata()
+            }
+        }
+    </script>
+
+</html>
