@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="cardcontainer"></div>
+</body>
+<script>
+    let url = "https://kontests.net/api/v1/all";
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); 
+
+            let cardcontainer = document.getElementById("cardcontainer");
+
+            let allCards = "";
+            for (let item of data) {
+                allCards += `
+                    <div style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
+                        <h3>${item.name}</h3>
+                        <p><strong>Start Time:</strong> ${item.start_time}</p>
+                        <p><strong>End Time:</strong> ${item.end_time}</p>
+                        <a href="${item.url}" target="_blank">View Contest</a>
+                    </div>
+                `;
+            }
+
+            cardcontainer.innerHTML = allCards;
+        })
+        .catch(error => {
+            console.error("Error fetching data:", error);
+        });
+</script>
+</html>

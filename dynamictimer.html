@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Timer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #4da5b0, #4caf50);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h1 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        #timer {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.3rem;
+            text-align: center;
+            margin-bottom: 20px;
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        #timer:focus {
+            border-color: #388e3c;
+        }
+
+        #time {
+            font-size: 3rem;    
+            font-weight: bold;
+            color: #333;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            width: 100%;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            width: 100px;
+            padding: 12px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #4caf50;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+            transform: scale(1.05);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Dynamic Timer</h1>
+        <input type="number" id="timer" placeholder="Enter time in seconds" />
+        <p id="time">00:00:00</p>
+        <div class="controls">
+            <button id="startbtn">Start</button>
+            <button id="stopbtn" disabled>Stop</button>
+            <button id="resetbtn" disabled>Reset</button>
+        </div>
+    </div>
+
+    <script>
+        const startbtn = document.getElementById('startbtn');
+        const stopbtn = document.getElementById('stopbtn');
+        const resetbtn = document.getElementById('resetbtn');
+        const timerInput = document.getElementById('timer');
+        const timeDisplay = document.getElementById('time');
+        
+        let interval;
+        let timerleft;
+
+        function updateTimerDisplay() {
+            const hours = Math.floor(timerleft / 3600).toString().padStart(2, "0");
+            const minutes = Math.floor((timerleft % 3600) / 60).toString().padStart(2, "0");
+            const seconds = (timerleft % 60).toString().padStart(2, "0");
+            timeDisplay.innerHTML = `${hours}:${minutes}:${seconds}`;
+        }
+
+        function startTimer() {
+            const inputValue = Number(timerInput.value);
+
+            if (isNaN(inputValue) || inputValue <= 0) {
+                alert("Please enter a valid time greater than 0 seconds.");
+                return;
+            }
+
+            timerleft = inputValue;
+            updateTimerDisplay();
+
+            startbtn.disabled = true;
+            stopbtn.disabled = false;
+            resetbtn.disabled = false;
+
+            interval = setInterval(() => {
+                timerleft--;
+                updateTimerDisplay();
+
+                if (timerleft <= 0) {
+                    alert("Time is up!");
+                    clearInterval(interval);
+                    startbtn.disabled = false;
+                    stopbtn.disabled = true;
+                    resetbtn.disabled = true;
+                }
+            }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(interval);
+            startbtn.disabled = false;
+            stopbtn.disabled = true;
+        }
+
+        function resetTimer() {
+            clearInterval(interval);
+            timerleft = 0;
+            updateTimerDisplay();
+            startbtn.disabled = false;
+            stopbtn.disabled = true;
+            resetbtn.disabled = true;
+            timerInput.value = "";
+        }
+
+        startbtn.addEventListener('click', startTimer);
+        stopbtn.addEventListener('click', stopTimer);
+        resetbtn.addEventListener('click', resetTimer);
+    </script>
+</body>
+</html>
