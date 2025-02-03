@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpenseHub Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Welcome to ExpenseHub</h1>
+    <form id="expense-form">
+        <input type="text" id="expense-name" placeholder="Expense Name" required>
+        <input type="number" id="expense-amount" placeholder="Expense Amount" required>
+        <input type="date" id="expense-date" required>
+        <input type="text" id="expense-category" placeholder="Category" required>
+        <button type="submit">Add Expense</button>
+    </form>
+    <ul id="expense-list"></ul>
+    <button onclick="logout()">Logout</button>
+    <script src="script.js"></script>
+</body>
+</html>
